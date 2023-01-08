@@ -1,19 +1,19 @@
 import PropType from "prop-types";
 import { Link } from "react-router-dom";
 
-function Movie({coverImg, title, year, summary, genres, id}) {
+function Movie({ coverImg, title, year, genres, id }) {
     return (
         <div >
-            <img src={coverImg} alt={title}/>
-            <h2>
-                <Link to={`/movie/${id}`}>{title}({year})</Link>
-            </h2>
-            <p>{summary}</p>
-            <ul>
-                {genres.map((g) => (
-                    <li key={g}>{g}</li>
-                ))}
-            </ul>
+            <fieldset style={{width:"33%"}}>
+                <legend>{title}({year})</legend>
+                <img src={coverImg} alt={title} />
+                <ul>
+                    {genres.map((g) => (
+                        <li key={g}>{g}</li>
+                    ))}
+                </ul>
+            </fieldset>
+
         </div>
     );
 }
@@ -21,9 +21,8 @@ function Movie({coverImg, title, year, summary, genres, id}) {
 Movie.propTypes = {
     coverImg: PropType.string.isRequired,
     title: PropType.string.isRequired,
-    summary: PropType.string.isRequired,
+    year:PropType.number.isRequired,
     genres: PropType.arrayOf(PropType.string).isRequired,
-    year: PropType.number.isRequired,
     id: PropType.number.isRequired
 }
 
