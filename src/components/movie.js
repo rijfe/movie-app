@@ -7,13 +7,15 @@ function Movie({ coverImg, title, year, rating, id }) {
 
     return (
         
-        <div className={styles.hide}>
+        <div className={styles.container}>
             <fieldset className={styles.border}>
                 <legend className={styles.title}>{title}({year})</legend>
                 <Link to={`/movie/${id}`}>
                     <img src={coverImg} alt={title} style={{marginTop:"15px"}} />
                 </Link>
-                <h2 className={styles.rating}>{rating}/10</h2>
+                <div className={styles.ratingBox}>
+                    <h2 className={styles.rating}>{rating}/10</h2>
+                </div>
             </fieldset>
         </div>
     );
