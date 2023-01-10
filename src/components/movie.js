@@ -1,19 +1,20 @@
 import PropType from "prop-types";
 import { Link } from "react-router-dom";
+import styles from "../Button.module.css";
 
-function Movie({ coverImg, title, year, genres, id }) {
+function Movie({ coverImg, title, year, rating, id }) {
+
+
     return (
-        <div >
-            <fieldset style={{width:"33%"}}>
-                <legend>{title}({year})</legend>
-                <img src={coverImg} alt={title} />
-                <ul>
-                    {genres.map((g) => (
-                        <li key={g}>{g}</li>
-                    ))}
-                </ul>
+        
+        <div className={styles.hide}>
+            <fieldset className={styles.border}>
+                <legend className={styles.title}>{title}({year})</legend>
+                <Link to={`/movie/${id}`}>
+                    <img src={coverImg} alt={title} style={{marginTop:"15px"}} />
+                </Link>
+                <h2 className={styles.rating}>{rating}/10</h2>
             </fieldset>
-
         </div>
     );
 }
@@ -22,7 +23,6 @@ Movie.propTypes = {
     coverImg: PropType.string.isRequired,
     title: PropType.string.isRequired,
     year:PropType.number.isRequired,
-    genres: PropType.arrayOf(PropType.string).isRequired,
     id: PropType.number.isRequired
 }
 

@@ -1,4 +1,23 @@
-.btn{
-    color: white;
-    background-color: tomato;
+.border{
+    border-style: solid;
+    border-width: 30%;
+    width: 30%;
+    height: 100%;
+    border-color: rgb(5, 83, 5);
+    border-radius: 10px;
 }
+
+.hide:hover{
+    position: relative;
+    overflow: hidden;
+}
+
+.rating{
+    position: absolute;
+}
+
+.title{
+    color: rgb(5, 83, 5);
+    font-weight: bold;
+    font-size: 13px;
+};
