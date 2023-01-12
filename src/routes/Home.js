@@ -33,6 +33,7 @@ function Home() {
                                 year={movie.year}
                                 coverImg={movie.medium_cover_image}
                                 rating={movie.rating}
+                                sumary={movie.summary}
                             />
                     ))}
                 </div>)
