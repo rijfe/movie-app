@@ -30,27 +30,37 @@ function Detail() {
 
     return loading ? <h1>Loading..</h1> : (
         <div style={{
-                backgroundImage: `url(${movie.background_image})`,
-            }}
-            className ={styles.backgroundImage}
-        >
+            backgroundImage: `url(${movie.background_image})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            width: "100%",
+            height: "100%",
+            backgroundAttachment: "scroll",
+            justifyContent:"center",
+            alignContent:"center"
+        }}>
             <div className={styles.container}>
-                <div className={styles.coverImg}>
-                    <img src={movie.medium_cover_image} />
-                </div>
-                <div className={styles.title}>
-                    <b><h1 style={{ color: 'white' }}>{movie.title}({movie.year})</h1></b>
-                </div>
-                <div className={styles.genres}>
-                    <ul>
-                        {movie?.genres.map((data) => { return <li style={{ color: 'white' }}>{data}</li> })}
-                    </ul>
-                </div>
-                <div className={styles.rating}>
-                    <h3 style={{ color: 'white' }}>{movie.rating}/ 10.0</h3>
-                </div>
-                <div className={styles.summary}>
-                    <h3 style={{ color: 'white' }}>{suma}</h3>
+                <div className={styles.infoContainer}>
+                    <div className={styles.coverImg}>
+                        <img src={movie.large_cover_image} />
+                        <div className={styles.rating}>
+                            <h3 style={{ color: 'white', fontSize: 50 }}>{movie.rating}/ 10.0</h3>
+                            <h3 style={{ color: 'white', fontSize: 50 }}>{movie.runtime}min</h3>
+                        </div>
+                    </div>
+                    <div className={styles.info}>
+                        <div className={styles.title}>
+                            <b><h1 style={{ color: 'white', fontSize: 50, top: 0, fontWeight:'bold' }}>{movie.title}({movie.year})</h1></b>
+                        </div>
+                        <div className={styles.genres}>
+                            <ul style={{ lifeStyle: "none" }}>
+                                {movie?.genres.map((data) => { return <li style={{ color: 'white', fontSize: 30, float: "left", marginLeft: 50 }}>{data}</li> })}
+                            </ul>
+                        </div>
+                        <div className={styles.summary}>
+                            <h3 style={{ color: 'white', fontSize: 30 }}>{suma}</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@ function Home() {
 
     const getMovies = async () => {
         const json = await (
-            await fetch("https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=year")
+            await fetch("https://yts.mx/api/v2/list_movies.json?minimum_rating=7.5&sort_by=year")
         ).json();
         console.log(json.data.movies);
         setMovies(json.data.movies);
@@ -34,6 +34,7 @@ function Home() {
                                 coverImg={movie.medium_cover_image}
                                 rating={movie.rating}
                                 sumary={movie.summary}
+                                runtime={movie.runtime}
                             />
                     ))}
                 </div>)

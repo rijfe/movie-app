@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import styles from "../Button.module.css";
 import { useRecoilState } from "recoil";
 
-import {sumaryInfo} from '../store/sumary';
+import { sumaryInfo } from '../store/sumary';
 
-function Movie({ coverImg, title, year, id, sumary }) {
+function Movie({ coverImg, title, year, id, sumary, rating, runtime }) {
     const [sum, setSum] = useRecoilState(sumaryInfo)
-    
-    const setInfo = () =>{
+
+    const setInfo = () => {
         setSum(sumary);
     };
 
@@ -17,8 +17,12 @@ function Movie({ coverImg, title, year, id, sumary }) {
             <fieldset className={styles.border}>
                 <legend className={styles.title}>{title}({year})</legend>
                 <Link to={`/movie/${id}`} onClick={setInfo}>
-                    <img src={coverImg} alt={title} style={{marginTop:"15px"}} />
+                    <img src={coverImg} alt={title} style={{ marginTop: "15px" }} />
                 </Link>
+                <div className={styles.rating}>
+                    <h3 style={{ color: "white", fontSize: 30 }}>{rating}/10</h3>
+                    <h3 style={{ color: "white", fontSize: 30 }}>{runtime}min</h3>
+                </div>
             </fieldset>
         </div>
     );
@@ -27,7 +31,7 @@ function Movie({ coverImg, title, year, id, sumary }) {
 Movie.propTypes = {
     coverImg: PropType.string.isRequired,
     title: PropType.string.isRequired,
-    year:PropType.number.isRequired,
+    year: PropType.number.isRequired,
     id: PropType.number.isRequired
 }
 
